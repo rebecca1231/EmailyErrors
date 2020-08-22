@@ -7,6 +7,7 @@ const keys = require("./config/keys");
 //the model has to be imported before passport or errors
 //so we define the model before passport tries to access and use it
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 mongoose
@@ -34,6 +35,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 //for production
 if (process.env.NODE_ENV === "production") {
@@ -41,7 +43,7 @@ if (process.env.NODE_ENV === "production") {
   //like main.js file, or main.css file
   app.use(express.static("client/build"));
 
-  //express will serve up index.html file when 
+  //express will serve up index.html file when
   //it doesn't recognize the route
   const path = require("path");
   app.get("*", (req, res) => {
