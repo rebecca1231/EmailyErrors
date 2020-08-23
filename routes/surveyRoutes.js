@@ -22,13 +22,11 @@ module.exports = (app) => {
     const surveys = await Survey.find({ _user: req.user.id }).select({
       recipients: false,
     });
-
     res.send(surveys);
   });
 
   app.post("/api/surveys/webhooks", (req, res) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
-
     _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname);
@@ -65,7 +63,6 @@ module.exports = (app) => {
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
-
     const survey = new Survey({
       title,
       subject,
@@ -83,9 +80,18 @@ module.exports = (app) => {
       req.user.credits -= 1;
       const user = await req.user.save();
       //update header
-      res.send(user);
+      res.send(user); 
     } catch (err) {
       res.status(422).send(err);
     }
   });
+
+  app.post("/api/surveys/delete/:id", requireLogin, async (req, res)=> {
+    const surveyId = req.params.id    
+    const deleted = await Survey.findByIdAndDelete(surveyId, data => data)
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false,
+    });
+    res.send(surveys);
+  })
 };
