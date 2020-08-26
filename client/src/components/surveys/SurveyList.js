@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import { fetchSurveys, deleteSurvey } from "../../actions";
 
 class SurveyList extends Component {
   componentDidMount() {
     this.props.fetchSurveys();
   }
-
+  renderReply(){
+    
+  }
   renderList() {
     return this.props.surveys.reverse().map((survey) => {
-     //render survey response info
+      //render survey response info
       const total = survey.yes + survey.no;
       const yesWidth = Math.round((survey.yes / total) * 100);
       const noWidth = Math.round((survey.no / total) * 100);
@@ -17,26 +20,21 @@ class SurveyList extends Component {
         ? ", Last Response on: " +
           new Date(survey.lastResponded).toLocaleDateString()
         : "";
-     
-        return (
-        <div className="card" key={survey._id}>
-          <div className="card-content">
-            <a
-              className="btn-floating btn red right"
-              onClick={() => this.props.deleteSurvey(survey._id)}
-            >
-              <i className="material-icons">delete</i>
-            </a>
+      return (
+        <div className="item" key={survey._id}>
+          <div className="content">
 
-            <span className="card-title">{survey.title}</span>
-            <p>{survey.body}</p>
+            <div className="header">{survey.title}</div>
+            <div className="description">
+            <p >{survey.body}</p>
 
-            <p className="right">
+            <p >
               Sent: {new Date(survey.dateSent).toLocaleDateString()}
               {lastResponse}
             </p>
+            </div>
           </div>
-          <div className="card-action">
+          <div className="">
             <div
               style={{
                 backgroundColor: "#a3d2ca",
@@ -64,7 +62,7 @@ class SurveyList extends Component {
   }
 
   render() {
-    return <div> {this.renderList()}</div>;
+    return <div className="ui celled animated list"> {this.renderList()}</div>;
   }
 }
 
@@ -72,4 +70,6 @@ const mapStateToProps = ({ surveys }) => {
   return { surveys };
 };
 
-export default connect(mapStateToProps, { fetchSurveys, deleteSurvey })(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys, deleteSurvey })(
+  SurveyList
+);

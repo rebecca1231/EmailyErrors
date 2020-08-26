@@ -8,6 +8,8 @@ import formFields from './formFields'
 
 
 class SurveyForm extends Component {
+
+  
   renderFields() {
     return _.map(formFields, ({ label, name }) => {
       return (
@@ -24,17 +26,17 @@ class SurveyForm extends Component {
 
   render() {
     return (
-      <div>
-        <form
+      <div >
+        <form className="ui form" style={{margin:"20px"}}
           onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}
         >
           {this.renderFields()}
-          <Link to="/surveys" className="red btn-flat white-text">
+          <Link to="/surveys" className="ui button negative">
             Cancel
           </Link>
-          <button className="teal btn-flat right white-text" type="submit">
+          <button className="teal ui button right floated" type="submit">
             Next
-            <i className="material-icons right">done</i>
+            <i className="arrow icon right"></i>
           </button>
         </form>
       </div>
@@ -45,7 +47,6 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
   errors.recipients = validateEmails(values.recipients || "");
-  //errors.sender = validateEmails(values.sender || "")
   
   _.each(formFields, ({ name }) => {
     if (!values[name]) {

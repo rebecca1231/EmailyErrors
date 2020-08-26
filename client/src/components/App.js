@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -7,6 +7,10 @@ import Header from './Header';
 import Landing from './Landing'
 import Dashboard from './Dashboard'
 import SurveyNew from './surveys/SurveyNew'
+import SurveyDelete from './surveys/SurveyDelete'
+import history from '../history'
+
+import Modal from '../Modal'
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -15,14 +19,16 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <BrowserRouter>
+        <Router history={history}>
           <div>
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
+
           </div>
-        </BrowserRouter>
+        </Router>
+
       </div>
     );
   }
