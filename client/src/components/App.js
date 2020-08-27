@@ -10,7 +10,6 @@ import SurveyNew from './surveys/SurveyNew'
 import SurveyDelete from './surveys/SurveyDelete'
 import history from '../history'
 
-import Modal from '../Modal'
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -25,7 +24,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
-
+            <Route path="/surveys/delete/:id" component={SurveyDelete} />
           </div>
         </Router>
 
