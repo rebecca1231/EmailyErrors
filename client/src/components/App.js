@@ -21,12 +21,11 @@ class App extends Component {
         <Router history={history}>
           <div>
             <Header />
-            <Switch>
+            
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
             <Route path="/surveys/delete/:id" component={SurveyDelete} />
-            </Switch>
             </div>
         </Router>
 
