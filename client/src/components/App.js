@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -21,11 +21,13 @@ class App extends Component {
         <Router history={history}>
           <div>
             <Header />
+            <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
             <Route path="/surveys/delete/:id" component={SurveyDelete} />
-          </div>
+            </Switch>
+            </div>
         </Router>
 
       </div>

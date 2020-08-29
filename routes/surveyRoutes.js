@@ -26,7 +26,7 @@ module.exports = (app) => {
   });
 
   app.get("/api/surveys/:id", requireLogin, async (req, res) => {
-    const survey = await Survey.findById({ _id: id }).select({
+    const survey = await Survey.findById({ _id: req.params.id }).select({
       recipients: false,
     });
     res.send(survey);
@@ -96,9 +96,6 @@ module.exports = (app) => {
   app.post("/api/surveys/delete/:id", requireLogin, async (req, res)=> {
     const surveyId = req.params.id    
     const deleted = await Survey.findByIdAndDelete(surveyId, data => data)
-    const surveys = await Survey.find({ _user: req.user.id }).select({
-      recipients: false,
-    });
-    res.send(surveys);
+    res.send({})
   })
 };

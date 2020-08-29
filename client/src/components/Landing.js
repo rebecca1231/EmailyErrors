@@ -9,16 +9,15 @@ const Landing = () => {
         <br />
         It's easy!
       </div>
-      <div className="ui list">
-        <ul>
-          <li>Login!</li>
-          <li>Add credits</li>
-          <li>Create a survey</li>
-          <li>Send it to everyone you know!</li>
-          ...Wait...
-          <li>Check your dashboard to see all your surveys and replies!</li>
-        </ul>
-      </div>
+      <ol className="ui huge list" style={{margin:"0 4rem", padding: "1rem"}}>
+          <li className="item">
+            <div className="">Login!</div>
+            </li>
+          <li className="item">Add credits.</li>
+          <li className="item">Create a survey.</li>
+          <li className="item">Send it to everyone you know!</li>
+          <li className="item">Check your dashboard to see all your surveys and replies.</li>
+      </ol>
     </div>
   );
 };

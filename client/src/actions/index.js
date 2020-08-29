@@ -34,8 +34,9 @@ export const fetchSurveys = () => async (dispatch) => {
 };
 
 //delete attempt
-export const deleteSurvey = (id) => async (dispatch) => {
+export const deleteSurvey = (id, history) => async (dispatch) => {
   const res = await axios.post(`/api/surveys/delete/${id}`);
 
+  history.push("/surveys");
   dispatch({ type: DELETE_SURVEY, payload: res.data });
 };
