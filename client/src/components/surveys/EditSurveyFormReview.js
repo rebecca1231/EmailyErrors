@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import formFields from "./formFields";
 import * as actions from "../../actions";
 
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey, saveSurvey, history }) => {
+const EditSurveyFormReview = ({ onCancel, formValues, submitSurvey, saveSurvey, history }) => {
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div className="item" key={name}>
@@ -40,7 +40,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, saveSurvey, hist
       </button>
 
       <button
-        onClick={() => submitSurvey(formValues, history)}
+        onClick={() => submitSurvey(formValues, history)} 
         className="ui button right floated teal"
       >
         Send Survey  
@@ -53,4 +53,4 @@ const mapStateToProps = (state) => {
   return { formValues: state.form.surveyForm.values };
 };
 
-export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
+export default connect(mapStateToProps, actions)(withRouter(EditSurveyFormReview));

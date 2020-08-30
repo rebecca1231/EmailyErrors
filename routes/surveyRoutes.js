@@ -14,10 +14,12 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = mongoose.model("surveys");
 
 module.exports = (app) => {
+  //callback for email response
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     res.send("Thank you for your feedback!");
   });
 
+  //get all surveys
   app.get("/api/surveys", requireLogin, async (req, res) => {
     const surveys = await Survey.find({ _user: req.user.id }).select({
       recipients: false,
@@ -25,6 +27,7 @@ module.exports = (app) => {
     res.send(surveys);
   });
 
+  //retrieve one survey
   app.get("/api/surveys/:id", requireLogin, async (req, res) => {
     const survey = await Survey.findById({ _id: req.params.id }).select({
       recipients: false,
@@ -32,6 +35,7 @@ module.exports = (app) => {
     res.send(survey);
   })
 
+  //for sendgrid
   app.post("/api/surveys/webhooks", (req, res) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
     _.chain(req.body)
@@ -68,6 +72,7 @@ module.exports = (app) => {
     res.send({});
   });
 
+//send a new survey
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
     const survey = new Survey({
@@ -93,6 +98,96 @@ module.exports = (app) => {
     }
   });
 
+  //save a draft of a survey
+  app.post("/api/surveys/save", requireLogin, async (req, res) => {
+    const { title, subject, body, recipients } = req.body;
+    const survey = new Survey({
+      title,
+      subject,
+      body,
+      recipients: recipients
+        .split(",")
+        .map((email) => ({ email: email.trim() })), //return email as object
+      _user: req.user.id,
+    });
+    try {
+      await survey.save();
+      const user = await req.user.save();
+      //update header
+      res.send(user); 
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
+  //findOneandUpdate, save
+  app.post("/api/surveys/save/:id", requireLogin, async (req, res) => {
+    const { title, subject, body, recipients } = req.body;
+    const surveyId = req.params.id    
+
+    Survey.updateOne(
+      {
+        //find criteria
+        _id: surveyId,
+      },
+      {
+        //update info
+        title,
+        subject,
+        body,
+        recipients: recipients
+        .split(",")
+        .map((email) => ({ email: email.trim() }))
+      }
+    ).exec();
+
+    try {
+      await survey.save();
+      const user = await req.user.save();
+      //update header
+      res.send(user); 
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
+
+  //findOneAndSend
+app.post("/api/surveys/:id", requireLogin, requireCredits, async (req, res) => {
+    const { title, subject, body, recipients } = req.body;
+    const surveyId = req.params.id    
+    const survey = await Survey.updateOne(
+      {
+        //find criteria
+        _id: surveyId,
+      },
+      {
+        //update info
+        title,
+        subject,
+        body,
+        dateSent: Date.now(),
+        recipients: recipients
+        .split(",")
+        .map((email) => ({ email: email.trim() }))
+      }
+    ).exec()
+
+
+    const mailer = new Mailer(survey, surveyTemplate(survey));
+    try {
+      await mailer.send();
+      await survey.save();
+      req.user.credits -= 1;
+      const user = await req.user.save();
+      //update header
+      res.send(user); 
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
+  //delete a survey
   app.post("/api/surveys/delete/:id", requireLogin, async (req, res)=> {
     const surveyId = req.params.id    
     const deleted = await Survey.findByIdAndDelete(surveyId, data => data)

@@ -1,0 +1,37 @@
+import React, { useState } from "react"
+import BarChart from "./BarChart"
+import "./barStyles.css"
+
+
+const ShowBarChart = () => {
+
+const [data, setData] = useState([25, 32, 40, 60, 12, 70, 80]);
+ return (
+<div       className="ui container"
+>
+<BarChart data={data} />
+      <button
+        onClick={() => setData(data.map((d) => d + 5))}
+        className="ui primary button"
+      >
+        Update
+      </button>
+      <button
+        onClick={() => setData(data.filter((d) => d < 35))}
+        className="ui teal button"
+      >
+        Filter
+      </button>
+      <button
+        onClick={() => setData([...data, Math.round(Math.random()*125)])}
+        className="ui green button"
+      >
+        Add Data
+      </button>
+</div>
+ )
+
+
+}
+
+export default ShowBarChart;
