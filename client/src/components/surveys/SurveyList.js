@@ -73,7 +73,8 @@ class SurveyList extends Component {
   }
 
   renderList() {
-    return this.props.surveys.reverse().map((survey) => {
+console.log(this.props)   
+ return this.props.surveys.reverse().map((survey) => {
       //render survey response info
       const total = survey.yes + survey.no;
       const yesWidth = Math.round((survey.yes / total) * 100);
@@ -83,6 +84,10 @@ class SurveyList extends Component {
         ? ", Last Response on: " +
           new Date(survey.lastResponded).toLocaleDateString()
         : "";
+        const sentDate = survey.dateSent
+        ? "Sent on: " +
+          new Date(survey.dateSent).toLocaleDateString()
+        : "Unsent Draft";
       return (
         <div className="item" key={survey._id}>
           {this.renderAdmin(survey)}
@@ -92,7 +97,7 @@ class SurveyList extends Component {
               <p>{survey.body}</p>
 
               <p>
-                Sent: {new Date(survey.dateSent).toLocaleDateString()}
+                {sentDate}
                 {lastResponse}
               </p>
             </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import Modal from "../../Modal";
 import { connect } from "react-redux";
-
+import {Link } from 'react-router-dom'
 import { fetchSurvey, deleteSurvey } from "../../actions";
+import history from '../../history'
 
 //import history from "../../history";
 //import { Link } from "react-router-dom";
@@ -20,16 +21,15 @@ class SurveyDelete extends React.Component {
     const { id } = this.props.match.params;
     return (
       <>
-        <a
-          onClick={() => this.props.deleteSurvey(id)}
-          href="/surveys"
+        <button
+          onClick={() => this.props.deleteSurvey(id, history)}
           className="ui negative button"
         >
           Delete
-        </a>
-        <a href="/surveys" className="ui button">
+        </button>
+        <Link to="/surveys" className="ui button">
           Cancel
-        </a>
+        </Link>
       </>
     );
   }
@@ -51,7 +51,7 @@ class SurveyDelete extends React.Component {
           title="Delete Survey"
           content={this.renderContent()}
           actions={this.renderActions()}
-          onDismiss={() => window.location.href="/surveys"}
+          onDismiss={() => history.push("/surveys")}
         />
       </div>
     );

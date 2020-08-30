@@ -5,7 +5,7 @@ export default function (state = [], action) {
     case FETCH_SURVEYS:
       return action.payload;
     case FETCH_SURVEY:
-      return { ...state, [action.payload._id]: action.payload };
+      return  [action.payload] ;
     case DELETE_SURVEY:
       return state;
     default:
