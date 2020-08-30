@@ -79,7 +79,6 @@ class SurveyList extends Component {
   }
 
   renderList() {
-console.log(this.props)   
  return this.props.surveys.reverse().map((survey) => {
       //render survey response info
       const total = survey.yes + survey.no;

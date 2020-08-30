@@ -1,10 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import { select, scaleBand, scaleLinear, axisBottom, axisRight } from "d3";
 import ResizeObserver from "resize-observer-polyfill";
-//import {data} from "./dummyData"
-//needs id
-//const organized = data.filter(d=> d.id == 1).map(d => [d.yes, d.no, d.maybe])
-//console.log(organized)
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchSurvey } from "../../actions";
 
 //custom hook to handle chart resizing
 const useResizeObserver = (ref) => {
@@ -26,12 +25,29 @@ const useResizeObserver = (ref) => {
   return dimensions;
 };
 
-const SurveyBarChart = ({ data }) => {
+const SurveyBarChart = ({ id }) => {
+  const sData = useSelector((state) => state.surveys[0]);
+  let data, title, subject, body;
+  if (sData) {
+    data = [sData.yes, sData.maybe, sData.no];
+    title = sData.title;
+    subject = sData.subject;
+    body = sData.body;
+  } else {
+    data = [300, 200, 100];
+  }
+
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
 
   useEffect(() => {
+    async function fetchData() {
+      const response = await fetchSurvey(id);
+      return response;
+    }
+    fetchData();
+
     const svg = select(svgRef.current);
 
     if (!dimensions) return;
@@ -39,26 +55,24 @@ const SurveyBarChart = ({ data }) => {
     //scales
     const xScale = scaleBand()
       .domain(data.map((value, index) => index))
-      .range([0, dimensions.width]) //change
+      .range([0, dimensions.width])
       .padding(0.25);
 
-    const yScale = scaleLinear()
-      .domain([0, 150]) //to do
-      .range([dimensions.height, 0]); //change
+    const yScale = scaleLinear().domain([0, 300]).range([dimensions.height, 0]);
 
     const colorScale = scaleLinear()
-      .domain([75, 100, 150])
-      .range(["green", "orange", "red"])
+      .domain([75, 150, 225])
+      .range(["#2185d0", "#00b5ad", "#a2d5f2"])
       .clamp(true);
 
-    const xAxis = axisBottom(xScale).ticks(data.length);
+    const xAxis = axisBottom(xScale).tickFormat("");
 
     svg
       .select("#x-axis")
       .style("transform", `translateY(${dimensions.height}px)`)
       .call(xAxis);
 
-    const yAxis = axisRight(yScale);
+    const yAxis = axisRight(yScale).ticks(8);
     svg
       .select(".y-axis")
       .style("transform", `translateX(${dimensions.width}px)`)
@@ -74,17 +88,19 @@ const SurveyBarChart = ({ data }) => {
       .attr("y", -dimensions.height)
       .attr("width", xScale.bandwidth())
       .on("mouseenter", (value, index) => {
+        const i = data.indexOf(index);
+        const msg = i === 0 ? "Yes: " : i === 1 ? "Maybe: " : "No: ";
         svg
           .selectAll(".tooltip")
           .data([value])
-          .join((enter) => enter.append("text").attr("y", yScale(value)))
+          .join((enter) => enter.append("text").attr("y", yScale(index)))
           .attr("class", "tooltip")
-          .text(value)
-          .attr("x", xScale(index) + xScale.bandwidth() / 2)
+          .text(`${msg}${index}`)
+          .attr("x", xScale(i) + xScale.bandwidth() / 2)
           .attr("text-anchor", "middle")
           .transition()
           .attr("opacity", 1)
-          .attr("y", yScale(value) - 10);
+          .attr("y", yScale(index) - 10);
       })
       .on("mouseleave", () => svg.select(".tooltip").remove())
       .transition()
@@ -93,14 +109,18 @@ const SurveyBarChart = ({ data }) => {
   }, [data, dimensions]);
 
   return (
-    <div
-      ref={wrapperRef}
-      style={{ marginBottom: "2rem" }}
-    >
+    <div>
+      <h3 className="ui header">Title: {title}</h3>
+      <div className="ui list">
+        <div className="item">Subject: {subject}</div>
+        <div className="item">Body: {body}</div>
+      </div>
+    <div ref={wrapperRef} style={{ marginBottom: "2rem", marginTop: "3rem" }}>
       <svg ref={svgRef} style={{ overflow: "visible" }}>
         <g id="x-axis" />
         <g className="y-axis" />
       </svg>
+    </div>
     </div>
   );
 };

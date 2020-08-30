@@ -27,6 +27,7 @@ const useResizeObserver = (ref) => {
 };
 
 const BarChart = ({ data }) => {
+  console.log(data)
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
