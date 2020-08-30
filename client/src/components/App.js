@@ -10,6 +10,7 @@ import SurveyNew from './surveys/SurveyNew'
 import SurveyDelete from './surveys/SurveyDelete'
 import EditSurvey from './surveys/EditSurvey'
 import SurveyChart from './surveys/SurveyChart'
+import ShowBarChart from './surveys/visualizations/ShowBarChart'
 import history from '../history'
 
 class App extends Component {
@@ -30,6 +31,8 @@ class App extends Component {
             <Route exact path="/surveys/delete/:id" component={SurveyDelete} />
             <Route exact path="/surveys/edit/:id" component={EditSurvey} />
             <Route exact path="/surveys/chart/:id" component={SurveyChart} />
+            <Route exact path="/surveys/showbarchart" component={ShowBarChart} />
+
 
             </Switch>
             </div>
