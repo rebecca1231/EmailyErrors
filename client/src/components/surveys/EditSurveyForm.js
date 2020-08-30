@@ -67,7 +67,7 @@ EditSurveyForm = reduxForm({
 // You have to connect() to any reducers that you wish to connect to yourself
 EditSurveyForm = connect(
   state => ({
-    initialValues: state.survey // pull initial values from account reducer
+    initialValues: state.surveys[0] // pull initial values from account reducer
   }),
   { fetchSurvey } // bind account loading action creator
 )(EditSurveyForm)

@@ -12,6 +12,12 @@ class SurveyList extends Component {
   renderAdmin(survey) {
     return (
       <div className="right floated content">
+      <Link
+      to={`/surveys/chart/${survey._id}`}
+      className="ui button icon purple"
+    >
+      <i className="chart bar icon"></i>
+    </Link>
         <Link to={`/surveys/edit/${survey._id}`} className="ui icon button">
           <i className="edit icon"></i>
         </Link>

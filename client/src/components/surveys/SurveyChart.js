@@ -1,14 +1,14 @@
 import React, { useState } from "react"
-import BarChart from "./BarChar"
+import SurveyBarChart from "./SurveyBarChart"
 
 
-const ShowBarChart = () => {
+const SurveyChart = () => {
 
 const [data, setData] = useState([25, 32, 40, 60, 12, 70, 80]);
  return (
 <div       className="ui container"
 >
-<BarChart data={data} />
+<SurveyBarChart data={data} />
       <button
         onClick={() => setData(data.map((d) => d + 5))}
         className="ui primary button"
@@ -33,4 +33,4 @@ const [data, setData] = useState([25, 32, 40, 60, 12, 70, 80]);
 
 }
 
-export default ShowBarChart;
+export default SurveyChart;

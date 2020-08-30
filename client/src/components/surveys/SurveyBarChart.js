@@ -26,7 +26,7 @@ const useResizeObserver = (ref) => {
   return dimensions;
 };
 
-const BarChart = ({ data }) => {
+const SurveyBarChart = ({ data }) => {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
@@ -104,4 +104,4 @@ const BarChart = ({ data }) => {
     </div>
   );
 };
-export default BarChart;
+export default SurveyBarChart;
