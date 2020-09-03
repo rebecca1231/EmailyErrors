@@ -33,9 +33,9 @@ class SurveyList extends Component {
 
   renderData(survey) {
     const total = survey.yes + survey.no + survey.maybe;
-    const yesWidth = Math.round((survey.yes / total) * 95);
-    const noWidth = Math.round((survey.no / total) * 95);
-    const maybeWidth = Math.round((survey.maybe / total) * 95);
+    const yesWidth = Math.round((survey.yes / total) * 98);
+    const noWidth = Math.round((survey.no / total) * 98);
+    const maybeWidth = Math.round((survey.maybe / total) * 98);
     return (
       <>
         <div
@@ -94,7 +94,7 @@ class SurveyList extends Component {
           new Date(survey.dateSent).toLocaleDateString()
         : "Unsent Draft";
       return (
-        <div className="item" key={survey._id}>
+        <div className="item" key={survey._id} style={{marginBottom: "0.75em"}} >
           {this.renderAdmin(survey)}
           <div className="content">
             <div className="header">{survey.title}</div>
@@ -115,7 +115,7 @@ class SurveyList extends Component {
   }
 
   render() {
-    return <div className="ui celled animated list"> {this.renderList()}</div>;
+    return <div style={{padding:"2%"}} className="ui animated list"> {this.renderList()}</div>;
   }
 }
 
