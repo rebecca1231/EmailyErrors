@@ -16,6 +16,15 @@ class Header extends Component {
         );
       default:
         return [
+          <div className="item">
+          <Link className="ui animated fade button yellow" to="/surveys/new">
+            <div className="visible content">New</div>
+            <div className="hidden content">
+              {" "}
+              <i className="plus icon"></i>
+            </div>
+          </Link>
+        </div>,
           <h4 className="item" key="3">
             {" "}
             Credits: {this.props.auth.credits}{" "}
@@ -49,15 +58,6 @@ class Header extends Component {
           </h1>
         </Link>
         <div className="menu right">
-          <div className="item">
-            <Link className="ui animated fade button yellow" to="/surveys/new">
-              <div className="visible content">New</div>
-              <div className="hidden content">
-                {" "}
-                <i className="plus icon"></i>
-              </div>
-            </Link>
-          </div>
           <div className="item">{this.renderContent()}</div>
         </div>
       </div>
