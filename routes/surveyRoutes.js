@@ -7,7 +7,7 @@ const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
 const recipientSchema = require("../models/Recipient");
 const Mailer = require("../services/Mailer");
-const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
+const surveyTemplate2 = require("../services/emailTemplates/surveyTemplate2");
 
 //use to create an instance of the survey class
 //then call save() to actually get it in the db
@@ -70,7 +70,7 @@ module.exports = (app) => {
       _user: req.user.id,
       dateSent: Date.now(),
     });
-    const mailer = new Mailer(survey, surveyTemplate(survey));
+    const mailer = new Mailer(survey, surveyTemplate2(survey));
     try {
       await mailer.send();
       await survey.save();
