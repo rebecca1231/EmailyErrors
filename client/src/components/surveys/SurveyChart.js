@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import {Link} from "react-router-dom"
+
 import SurveyBarChart from "./SurveyBarChart";
 import SurveyPieChart from "./SurveyPieChart"
-import { connect } from "react-redux";
 import { fetchSurvey } from "../../actions";
 
 class SurveyChart extends React.Component {
@@ -19,6 +21,13 @@ class SurveyChart extends React.Component {
     return (
       <div className="ui container">
         <div style={{margin: "1rem"}}>
+        <Link
+            to="/surveys"
+            className="ui button"
+            >
+              <i class="arrow left icon"></i>
+        Back
+            </Link>
      <button
         className="ui button purple"
         onClick={() => {this.state.pie === true ? 

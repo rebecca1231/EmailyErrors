@@ -29,7 +29,7 @@ class Header extends Component {
             to={this.props.auth ? "/surveys" : "/"}
             className="item" style={{marginLeft: "10px"}}
           >
-            <h1>Opine</h1>
+            <h1 style={{color:"#24a19c", fontFamily:"Lobster Two", fontSize: "3em"}}>Opine</h1>
           </Link>
           <div className="right menu">
           <div className="item">{this.renderContent()}</div>
