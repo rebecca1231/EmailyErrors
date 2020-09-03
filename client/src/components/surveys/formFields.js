@@ -1,6 +1,6 @@
 export default [
-  { label: "Survey Title", name: "title" },
-  { label: "Subject", name: "subject" },
-  { label: "Body with Question", name: "body" },
-  { label: "List of Recipients", name: "recipients" },
+  { label: "Title (only you can see this)", name: "title" },
+  { label: "Subject for your email", name: "subject" },
+  { label: 'Ask your Question (current answer options: "Yes", "Maybe", or "No")' , name: "body" },
+  { label: "Enter a list of Recipients", name: "recipients" },
 ];

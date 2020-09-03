@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@stripe/stripe-js": "^1.9.0",
     "body-parser": "^1.19.0",
     "concurrently": "^5.3.0",
     "cookie-session": "^1.4.0",
@@ -28,6 +29,6 @@
     "passport-google-oauth20": "^2.0.0",
     "path-parser": "^6.1.0",
     "sendgrid": "^5.2.3",
-    "stripe": "^8.86.0"
+    "stripe": "^8.92.0"
   }
 }
