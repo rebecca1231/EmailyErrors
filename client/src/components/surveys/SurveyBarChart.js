@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { select, scaleBand, scaleLinear, axisBottom, axisRight } from "d3";
+import { select, scaleBand, scaleLinear, axisBottom, axisRight, max } from "d3";
 import ResizeObserver from "resize-observer-polyfill";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -58,7 +58,7 @@ const SurveyBarChart = ({ id }) => {
       .range([0, dimensions.width])
       .padding(0.25);
 
-    const yScale = scaleLinear().domain([0, 300]).range([dimensions.height, 0]);
+    const yScale = scaleLinear().domain([0, max(data)]).range([dimensions.height, 0]);
 
     const colorScale = scaleLinear()
       .domain([75, 150, 225])
