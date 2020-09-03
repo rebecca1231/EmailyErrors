@@ -29,7 +29,7 @@ class Header extends Component {
             {" "}
             Credits: {this.props.auth.credits}{" "}
           </h4>,
-          <a className="ui button" key="2" a href="/api/logout">
+          <a className="ui button" key="2" href="/api/logout">
             Logout
           </a>,
           <a className="item" key="1">
@@ -57,6 +57,7 @@ class Header extends Component {
             Opine
           </h1>
         </Link>
+
         <div className="menu right">
           <div className="item">{this.renderContent()}</div>
         </div>

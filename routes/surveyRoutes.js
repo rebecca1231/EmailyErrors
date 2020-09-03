@@ -16,8 +16,8 @@ const Survey = mongoose.model("surveys");
 module.exports = (app) => {
   
   //callback for email response
-  app.get("//api/surveys/:surveyId/:choice", (req, res) => {
-    res.send("Thank you for your feedback!");
+  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/public", 'answer.html'));
   });
 
   //for sendgrid to deal with email response
