@@ -14,12 +14,10 @@ const surveyTemplate2 = require("../services/emailTemplates/surveyTemplate2");
 const Survey = mongoose.model("surveys");
 
 module.exports = (app) => {
-  app.use(express.static(path.join(__dirname, '../client/public')));
-
-
+  
   //callback for email response
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/public", 'answer.html'));
+    res.send("Thank you for your feedback!");
   });
 
   //for sendgrid to deal with email response
