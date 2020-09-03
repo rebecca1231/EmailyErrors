@@ -16,7 +16,7 @@ const Survey = mongoose.model("surveys");
 module.exports = (app) => {
   
   //callback for email response
-  app.get("//api/surveys/:surveyId/:choice", (req, res) => {
+  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     res.send("Thank you for your feedback!");
   });
 
