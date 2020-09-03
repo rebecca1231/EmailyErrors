@@ -1,4 +1,5 @@
 import React from "react";
+import myVideo from '../myVideo.mov'
 
 const Landing = () => {
   return (
@@ -18,11 +19,13 @@ const Landing = () => {
           <li className="item">
             <div className="">Login with Google account.</div>
             </li>
-          <li className="item">Add credits.</li>
           <li className="item">Compose a question.</li>
           <li className="item">Send it to everyone you know!</li>
           <li className="item">Check your dashboard to see all your surveys and replies.</li>
       </ol>
+      <div style={{margin:"3em"}}>
+      <video src={myVideo} autoPlay="true" width="600" height="300" controls="controls" autoplay="true" />
+      </div>
     </div>
   );
 };
