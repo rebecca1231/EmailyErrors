@@ -17,35 +17,39 @@ class Header extends Component {
       default:
         return [
           <div className="item">
-          <Link className="ui animated fade button yellow" to="/surveys/new">
-            <div className="visible content">New</div>
-            <div className="hidden content">
-              {" "}
-              <i className="plus icon"></i>
-            </div>
-          </Link>
-        </div>,
+            <Link className="ui animated fade button yellow" to="/surveys/new">
+              <div className="visible content">New</div>
+              <div className="hidden content">
+                {" "}
+                <i className="plus icon"></i>
+              </div>
+            </Link>
+          </div>,
+          <div className="item">
+            <a className="ui button" key="2" href="/api/logout">
+              Logout
+            </a>
+          </div>,
+          <>
           <h4 className="item" key="3">
             {" "}
-            Credits: {this.props.auth.credits}{" "}
-          </h4>,
-          <a className="ui button" key="2" href="/api/logout">
-            Logout
-          </a>,
-          <a className="item" key="1">
+          {this.props.auth.credits}
+          </h4>
+          <a key="1">
             <Payments />
-          </a>,
+          </a>
+          </>,
         ];
     }
   }
 
   render() {
     return (
+      <div className="ui container">
       <div className="ui secondary pointing menu">
         <Link
           to={this.props.auth ? "/surveys" : "/"}
           className="item"
-          style={{ marginLeft: "10px" }}
         >
           <h1
             style={{
@@ -57,9 +61,9 @@ class Header extends Component {
             Opine
           </h1>
         </Link>
-
         <div className="menu right">
           <div className="item">{this.renderContent()}</div>
+        </div>
         </div>
       </div>
     );
