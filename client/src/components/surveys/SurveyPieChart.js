@@ -9,13 +9,13 @@ const PieChart = (props) => {
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
   const id = props.id;
-  const survey = useSelector((state) => state.surveys[0]);
+  const survey = useSelector((state) => state.surveys.filter(s => s._id == id));
   let data, title, subject, body;
-  if (survey) {
-    data = [survey.yes, survey.maybe, survey.no];
-    title = survey.title;
-    subject = survey.subject;
-    body = survey.body;
+  if (survey[0]) {
+    data = [survey[0].yes, survey[0].maybe, survey[0].no];
+    title = survey[0].title;
+    subject = survey[0].subject;
+    body = survey[0].body;
   } else {
     data = [300, 200, 100];
   }

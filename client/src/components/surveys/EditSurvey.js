@@ -38,8 +38,8 @@ class EditSurvey extends Component {
   }
 }
 
-const mapStateToProps = ({surveys}) => {
-    return  { survey: surveys[0] } ;
+const mapStateToProps = ({survey}) => {
+    return  { survey: survey[0] } ;
   };
 
 export default connect(mapStateToProps, {fetchSurvey})(reduxForm({ form: "surveyForm" })(EditSurvey));

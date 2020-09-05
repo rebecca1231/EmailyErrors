@@ -25,14 +25,16 @@ const useResizeObserver = (ref) => {
   return dimensions;
 };
 
-const SurveyBarChart = ({ id }) => {
-  const sData = useSelector((state) => state.surveys[0]);
+const SurveyBarChart = (props) => {
+const id = props.id
+ 
+  const sData = useSelector((state) => state.surveys.filter(s => s._id == id))
   let data, title, subject, body;
-  if (sData) {
-    data = [sData.yes, sData.maybe, sData.no];
-    title = sData.title;
-    subject = sData.subject;
-    body = sData.body;
+  if (sData[0]) {
+    data = [sData[0].yes, sData[0].maybe, sData[0].no];
+    title = sData[0].title;
+    subject = sData[0].subject;
+    body = sData[0].body;
   } else {
     data = [300, 200, 100];
   }

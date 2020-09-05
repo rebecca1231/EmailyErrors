@@ -58,8 +58,8 @@ class SurveyDelete extends React.Component {
   }
 }
 
-const mapStateToProps = ({surveys}, ownProps) => {
-  return  { survey: surveys[ownProps.match.params.id] } ;
+const mapStateToProps = ({survey}, ownProps) => {
+  return  { survey: survey[0] } ;
 };
 export default connect(mapStateToProps, { fetchSurvey, deleteSurvey })(
   SurveyDelete
