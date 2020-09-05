@@ -13,7 +13,7 @@ const Landing = () => {
       </div>
       <div className="ui huge header center aligned">Have a question?</div>
       <div className="ui large header center aligned">
-        Want to know what people think?
+        Need some opinions on the matter?
       </div>
       <div className="ui large header center aligned">It's easy!</div>
       <ol className="ui huge list">
@@ -28,7 +28,7 @@ const Landing = () => {
       <video
         src={myVideo}
         autoPlay="true"
-        style={{ display: "block", margin: "1em auto 0 auto", width: "80vw" }}
+        style={{ display: "block", margin: "1em auto 0 auto", width: "80vw", maxWidth:"600px" }}
         controls="controls"
         autoplay="true"
       />
