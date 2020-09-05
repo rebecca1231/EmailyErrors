@@ -79,6 +79,17 @@ class SurveyList extends Component {
   }
 
   renderList() {
+    if(this.props.surveys.length < 1) return (
+      <div className="ui container" style={{height:"60vh"}}>
+        <h2>
+          <br />
+          Just getting started?
+          </h2>
+          <h3>
+          Click on the yellow "+" or "New" button to add a question to your list!
+        </h3>
+      </div>
+    )
  return this.props.surveys.reverse().map((survey) => {
       //render survey response info
       const total = survey.yes + survey.no;

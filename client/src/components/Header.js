@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Payments from "./Payments";
 
 class Header extends Component {
   renderContent() {
@@ -30,27 +29,14 @@ class Header extends Component {
               Logout
             </a>
           </div>,
-          <>
-          <h4 className="item" key="3">
-            {" "}
-          {this.props.auth.credits}
-          </h4>
-          <a key="1">
-            <Payments />
-          </a>
-          </>,
         ];
     }
   }
 
   render() {
     return (
-      <div className="ui container">
       <div className="ui secondary pointing menu">
-        <Link
-          to={this.props.auth ? "/surveys" : "/"}
-          className="item"
-        >
+        <Link to={this.props.auth ? "/surveys" : "/"} className="item">
           <h1
             style={{
               color: "#24a19c",
@@ -63,7 +49,6 @@ class Header extends Component {
         </Link>
         <div className="menu right">
           <div className="item">{this.renderContent()}</div>
-        </div>
         </div>
       </div>
     );
