@@ -29,7 +29,7 @@ const Landing = () => {
       <video
         src={myVideo}
         autoPlay="true"
-        style={{ display: "block", margin: "1em auto 20em auto", width: "80vw", maxWidth:"500px" }}
+        style={{ display: "block", margin: "1rem auto 10rem auto", width: "80vw", maxWidth:"500px" }}
         controls="controls"
         autoplay="true"
       />
