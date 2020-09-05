@@ -1,5 +1,5 @@
 import React from "react";
-//import myVideo from "../myVideo.mov";
+import myVideo from "../myVideo.mov";
 
 const Landing = () => {
   return (
@@ -26,19 +26,15 @@ const Landing = () => {
         </li>
       </ol>
       </div>
-      
+      <video
+        src={myVideo}
+        autoPlay="true"
+        style={{ display: "block", margin: "1em auto 0 auto", width: "80vw", maxWidth:"500px" }}
+        controls="controls"
+        autoplay="true"
+      />
     </div>
   );
 };
 
 export default Landing;
-/*
-
-<video
-        src={myVideo}
-        autoPlay="true"
-        style={{ display: "block", margin: "1em auto 0 auto", width: "80vw", maxWidth:"600px" }}
-        controls="controls"
-        autoplay="true"
-      />
-*/
