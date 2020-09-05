@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="ui container" style={{ height: "70vh" }}>
+    <div className="ui container" style={{ height: "70vh", marginBottom:"5rem" }}>
       <h1>Opine</h1>
       <div style={{ marginLeft: "1rem" }}>
         <h4>Etymology</h4>
@@ -33,7 +33,7 @@ const About = () => {
                 "...opined that the nominee was not fit to serve on the Supreme
                 Court."
               </div>
-            </div>
+            </div>  z
           </div>
         </div>
       </div>
