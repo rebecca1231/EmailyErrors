@@ -57,7 +57,8 @@ class EditSurvey extends Component {
     return (
       <div>
         {this.renderContent()}
-        <div>
+        <div style={{marginLeft:"1.25rem"}}>
+          <h3>Edit Other Emails</h3>
           <div className="ui celled horizontal list">{this.renderList(this.state.id)}</div>
         </div>
       </div>
