@@ -36,6 +36,10 @@ class Footer extends Component {
             About
         </Link>
         <div className="menu right">
+
+        <div className="item">
+        &#169;2020 Opine
+        </div>
           <div className="item">{this.renderContent()}</div>
         </div>
         </div>

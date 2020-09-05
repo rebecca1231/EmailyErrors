@@ -17,7 +17,7 @@ module.exports = (app) => {
   
   //callback for email response
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
-    res.send("Thank you for your feedback!");
+    res.redirect("/thanks");
   });
 
   //for sendgrid to deal with email response

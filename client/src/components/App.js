@@ -13,6 +13,7 @@ import EditSurvey from './surveys/EditSurvey'
 import SurveyChart from './surveys/SurveyChart'
 import ShowBarChart from './surveys/visualizations/ShowBarChart'
 import About from './About'
+import Thanks from './surveys/Thanks'
 
 import history from '../history'
 
@@ -36,6 +37,7 @@ class App extends Component {
             <Route exact path="/surveys/chart/:id" component={SurveyChart} />
             <Route exact path="/surveys/showbarchart" component={ShowBarChart} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/thanks" component={Thanks} />
 
             </Switch>
             <Footer />
