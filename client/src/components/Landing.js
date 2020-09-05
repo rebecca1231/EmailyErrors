@@ -3,7 +3,7 @@ import myVideo from "../myVideo.mov";
 
 const Landing = () => {
   return (
-    <div style={{height:"70vh"}}>
+    <div >
       <div  className="ui container">
       <div
         style={{ color: "#24a19c", fontFamily: "Lobster Two", fontSize: "5em" }}
@@ -29,7 +29,7 @@ const Landing = () => {
       <video
         src={myVideo}
         autoPlay="true"
-        style={{ display: "block", margin: "1em auto 10em auto", width: "80vw", maxWidth:"500px" }}
+        style={{ display: "block", margin: "1em auto 20em auto", width: "80vw", maxWidth:"500px" }}
         controls="controls"
         autoplay="true"
       />
