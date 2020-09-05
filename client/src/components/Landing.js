@@ -1,5 +1,5 @@
 import React from "react";
-import myVideo from "../myVideo.mov";
+//import myVideo from "../myVideo.mov";
 
 const Landing = () => {
   return (
@@ -9,7 +9,8 @@ const Landing = () => {
         style={{ color: "#24a19c", fontFamily: "Lobster Two", fontSize: "5em" }}
         className="ui huge header center aligned "
       >
-        Opine!
+        Opine!       <p style={{fontSize:"1.25rem", color: "#24a19c", fontFamily: "Lobster Two"}} >...to state one's opinion</p>
+
       </div>
       <div className="ui huge header center aligned">Have a question?</div>
       <div className="ui large header center aligned">
@@ -25,15 +26,19 @@ const Landing = () => {
         </li>
       </ol>
       </div>
-      <video
+      
+    </div>
+  );
+};
+
+export default Landing;
+/*
+
+<video
         src={myVideo}
         autoPlay="true"
         style={{ display: "block", margin: "1em auto 0 auto", width: "80vw", maxWidth:"600px" }}
         controls="controls"
         autoplay="true"
       />
-    </div>
-  );
-};
-
-export default Landing;
+*/
