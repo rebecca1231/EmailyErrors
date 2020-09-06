@@ -26,7 +26,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className="ui secondary menu" style={{bottom:0, marginTop: "10rem"}}  >
+      <div className="ui secondary menu" style={{bottom:0, marginTop: "7rem"}}  >
         <Link
           to="/about"
           className="item"
