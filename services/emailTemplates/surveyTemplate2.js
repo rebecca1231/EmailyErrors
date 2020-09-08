@@ -1,6 +1,6 @@
 const keys = require("../../config/keys");
 
-module.exports = (survey) => {
+module.exports = (survey, email) => {
   return `
   <html>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@500&display=swap" rel="stylesheet">      
@@ -12,8 +12,8 @@ module.exports = (survey) => {
 
   <body style=>
   <div style="border-radius: 25px; text-align:center; line-height:1.5; background-color:white; font-family:‘Roboto’, Arial, sans-serif; color:black; padding:0.5rem">
-    <h2> ${survey.subject}</h2>
-    <h3>${survey.body} </h3>
+  <h3> A Question From: ${survey.sender}</h3>
+  <h3>${survey.body} </h3>
 <div  style="padding:1%; line-height:1.5">
     <div>
       <a style="text-decoration: none; color:#24a19c; font-size: 1.5em" href="${keys.redirectDomain}/api/surveys/${survey.id}/yes">Yes</a>

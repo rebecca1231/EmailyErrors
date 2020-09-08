@@ -59,10 +59,11 @@ module.exports = (app) => {
 
 //send a new survey
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
-    const { title, subject, body, recipients } = req.body;
+    const { title, subject, sender, body, recipients } = req.body;
     const survey = new Survey({
       title,
       subject,
+      sender,
       body,
       recipients: recipients
         .split(",")
