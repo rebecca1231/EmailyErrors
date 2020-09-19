@@ -149,6 +149,21 @@ class SurveyList extends Component {
     }
     return comparison * -1;
   }
+
+  compareDate(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const dateA = a.dateSent.toUpperCase();
+    const dateB = b.dateSent.toUpperCase();
+
+    let comparison = 0;
+    if (dateA > dateB) {
+      comparison = 1;
+    } else if (dateA < dateB) {
+      comparison = -1;
+    }
+    return comparison * -1;
+  }
+
   render() {
     let list = this.renderList();
 
@@ -163,9 +178,9 @@ class SurveyList extends Component {
                 onClick={() =>
                   this.state.older === false
                     ? (this.setState({ older: true, olderText: "Newer" }),
-                      list.reverse())
+                      this.props.surveys.sort(this.compareDate))
                     : (this.setState({ older: false, olderText: "Older" }),
-                      list.reverse())
+                      this.props.surveys.sort(this.compareDate).reverse())
                 }
               >
                 {this.state.olderText}
@@ -178,7 +193,7 @@ class SurveyList extends Component {
                     ? (this.setState({ atoZ: true, atoZText: "Z - A" }),
                       this.props.surveys.sort(this.compare))
                     : (this.setState({ atoZ: false, atoZText: "A - Z" }),
-                      list.reverse())
+                      this.props.surveys.sort(this.compare).reverse())
                 }
               >
                 {this.state.atoZText}
