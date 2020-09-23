@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { fetchSurveys } from "../../actions";
+import {compareTitle, compareDate} from '../../utils/sortingHelpers'
 
 class SurveyList extends Component {
   state = {
@@ -136,33 +137,7 @@ class SurveyList extends Component {
       );
     });
   }
-  compare(a, b) {
-    // Use toUpperCase() to ignore character casing
-    const titleA = a.title.toUpperCase();
-    const titleB = b.title.toUpperCase();
-
-    let comparison = 0;
-    if (titleA > titleB) {
-      comparison = 1;
-    } else if (titleA < titleB) {
-      comparison = -1;
-    }
-    return comparison * -1;
-  }
-
-  compareDate(a, b) {
-    // Use toUpperCase() to ignore character casing
-    const dateA = a.dateSent.toUpperCase();
-    const dateB = b.dateSent.toUpperCase();
-
-    let comparison = 0;
-    if (dateA > dateB) {
-      comparison = 1;
-    } else if (dateA < dateB) {
-      comparison = -1;
-    }
-    return comparison * -1;
-  }
+  //cut sorting function helpers
 
   render() {
     let list = this.renderList();
@@ -178,9 +153,9 @@ class SurveyList extends Component {
                 onClick={() =>
                   this.state.older === false
                     ? (this.setState({ older: true, olderText: "Newer" }),
-                      this.props.surveys.sort(this.compareDate))
+                      this.props.surveys.sort(compareDate).reverse())
                     : (this.setState({ older: false, olderText: "Older" }),
-                      this.props.surveys.sort(this.compareDate).reverse())
+                      this.props.surveys.sort(compareDate))
                 }
               >
                 {this.state.olderText}
@@ -191,9 +166,9 @@ class SurveyList extends Component {
                 onClick={() =>
                   this.state.atoZ === false
                     ? (this.setState({ atoZ: true, atoZText: "Z - A" }),
-                      this.props.surveys.sort(this.compare))
+                      this.props.surveys.sort(compareTitle))
                     : (this.setState({ atoZ: false, atoZText: "A - Z" }),
-                      this.props.surveys.sort(this.compare).reverse())
+                      this.props.surveys.sort(compareTitle).reverse())
                 }
               >
                 {this.state.atoZText}
