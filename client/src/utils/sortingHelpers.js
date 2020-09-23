@@ -25,3 +25,4 @@ export const compareTitle = (a, b) => {
     }
     return comparison * -1;
   }
+

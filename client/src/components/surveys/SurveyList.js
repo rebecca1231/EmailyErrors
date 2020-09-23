@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { fetchSurveys } from "../../actions";
-import {compareTitle, compareDate} from '../../utils/sortingHelpers'
+import {compareTitle, compareDate, compare} from '../../utils/sortingHelpers'
 
 class SurveyList extends Component {
   state = {
