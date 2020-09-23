@@ -6,7 +6,7 @@ module.exports = (survey, email) => {
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@500&display=swap" rel="stylesheet">      
   <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
 
-  <div style="background-color: #eeeeee; padding: 1rem; text-align: center; font-family:  'Lobster Two', Arial, sans-serif; color:#24a19c" >
+  <div style="background-color: #eeeeee; padding: 1rem; text-align: center; font-family: 'Lobster Two', Arial, sans-serif; color:#24a19c" >
 
     <h2>Opine</h2>
 
