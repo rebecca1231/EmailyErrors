@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { Component  } from "react";
+import React from "react";
 import { reduxForm, Field } from "redux-form"; //like connect, communicate w store
 import SurveyField from "./SurveyField";
 import { Link } from "react-router-dom";

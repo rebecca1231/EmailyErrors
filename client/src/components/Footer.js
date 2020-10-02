@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Payments from "./Payments";
+//import Payments from "./Payments";
 
 class Footer extends Component {
   renderContent() {
@@ -17,7 +17,6 @@ class Footer extends Component {
             Credits: {this.props.auth.credits}
           </h4>
           <a key="1">
-            <Payments />
           </a>
           </>,
         ];

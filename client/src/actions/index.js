@@ -8,12 +8,12 @@ export const fetchUser = () => async (dispatch) => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-//update credits
+/*update credits
 export const handleToken = (token) => async (dispatch) => {
   const res = await axios.post("/api/stripe", token);
 
   dispatch({ type: FETCH_USER, payload: res.data });
-};
+};*/
 
 //save and send a survey
 export const submitSurvey = (values, history) => async (dispatch) => {

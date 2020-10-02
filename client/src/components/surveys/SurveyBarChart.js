@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { select, scaleBand, scaleLinear, axisBottom, axisRight, max } from "d3";
 import ResizeObserver from "resize-observer-polyfill";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { fetchSurvey } from "../../actions";
 

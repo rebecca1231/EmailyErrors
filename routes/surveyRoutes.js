@@ -4,7 +4,7 @@ const { Path } = require("path-parser");
 const { URL } = require("url");
 
 const requireLogin = require("../middlewares/requireLogin");
-const requireCredits = require("../middlewares/requireCredits");
+//const requireCredits = require("../middlewares/requireCredits");
 const recipientSchema = require("../models/Recipient");
 const Mailer = require("../services/Mailer");
 const surveyTemplate2 = require("../services/emailTemplates/surveyTemplate2");
@@ -58,7 +58,7 @@ module.exports = (app) => {
   });
 
 //send a new survey
-  app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
+  app.post("/api/surveys", requireLogin, /*requireCredits,*/ async (req, res) => {
     const { title, subject, sender, body, recipients } = req.body;
     const survey = new Survey({
       title,

@@ -7,7 +7,6 @@ import EditSurveyForm from "./EditSurveyForm";
 import SurveyFormReview from "./SurveyFormReview";
 import { connect } from "react-redux";
 import { fetchSurvey, fetchSurveys } from "../../actions";
-import { Link } from "react-router-dom";
 
 //input values from id
 
