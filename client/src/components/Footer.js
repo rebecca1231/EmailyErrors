@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-//import Payments from "./Payments";
 
 class Footer extends Component {
   render() {
@@ -15,11 +14,15 @@ class Footer extends Component {
         </Link>
         <div className="menu right">
           <div className="item">&#169;2020 Opine</div>
-          <div className="item">
-            <a className="ui button" key="2" href="/api/logout">
-              Logout
-            </a>
-          </div>
+          {this.props.auth ? (
+            <div className="item">
+              <a className="ui button" key="2" href="/api/logout">
+                Logout
+              </a>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );

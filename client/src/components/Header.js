@@ -10,7 +10,7 @@ class Header extends Component {
       case false:
         return (
           <a className="ui primary button" href="/auth/google">
-            Login With Google
+            Login
           </a>
         );
       default:
