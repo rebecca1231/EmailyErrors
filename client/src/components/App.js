@@ -13,7 +13,7 @@ import EditSurvey from './surveys/EditSurvey'
 import SurveyChart from './surveys/SurveyChart'
 import ShowBarChart from './surveys/visualizations/ShowBarChart'
 import About from './About'
-import Thanks from './surveys/Thanks'
+import Thanks from './Thanks'
 
 import history from '../history'
 

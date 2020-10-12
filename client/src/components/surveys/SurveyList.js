@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { fetchSurveys } from "../../actions";
 import {compareTitle, compareDate } from '../../utils/sortingHelpers'
+import renderData from '../visualizations/renderData'
 
 class SurveyList extends Component {
   state = {
@@ -39,52 +40,7 @@ class SurveyList extends Component {
     );
   }
 
-  renderData(survey) {
-    const total = survey.yes + survey.no + survey.maybe;
-    const yesWidth = Math.round((survey.yes / total) * 98);
-    const noWidth = Math.round((survey.no / total) * 98);
-    const maybeWidth = Math.round((survey.maybe / total) * 98);
-    return (
-      <>
-        <div
-          style={{
-            backgroundColor: "#2185d0",
-            padding: "5px",
-            width: `${yesWidth}%`,
-            display: "inline-block",
-            color: "#f1f3f8",
-          }}
-        >
-          Yes: <br />
-          {survey.yes}
-        </div>
-        <div
-          style={{
-            backgroundColor: "#00b5ad",
-            padding: "5px",
-            width: `${maybeWidth}%`,
-            display: "inline-block",
-            color: "#f1f3f8",
-          }}
-        >
-          Maybe: <br />
-          {survey.maybe}
-        </div>
-        <div
-          style={{
-            backgroundColor: "#a2d5f2",
-            padding: "5px",
-            width: `${noWidth}%`,
-            display: "inline-block",
-            color: "#0f3460",
-          }}
-        >
-          No: <br />
-          {survey.no}
-        </div>
-      </>
-    );
-  }
+
 
   renderList(surveys = this.props.surveys) {
     if (surveys.length < 1)
@@ -132,12 +88,11 @@ class SurveyList extends Component {
             </div>
           </div>
 
-          {this.renderData(survey)}
+          {renderData(survey)}
         </div>
       );
     });
   }
-  //cut sorting function helpers
 
   render() {
     let list = this.renderList();

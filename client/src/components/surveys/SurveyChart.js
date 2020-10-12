@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import SurveyBarChart from "./SurveyBarChart";
-import SurveyPieChart from "./SurveyPieChart";
+import SurveyBarChart from "../visualizations/SurveyBarChart";
+import SurveyPieChart from "../visualizations/SurveyPieChart";
 import { fetchSurvey, fetchSurveys } from "../../actions";
 
 class SurveyChart extends React.Component {
