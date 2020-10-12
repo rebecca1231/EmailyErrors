@@ -44,11 +44,7 @@ const About = () => {
           many people at once. The intention is that the respondents will have
           anonymity to answer honestly.
         </p>
-        <p>
-          I do ask that users login before using the site. Everyone begins with
-          25 credits. Each poll sent is one credit, regardless of the number of
-          recipients.
-        </p>
+       
         <h3>
           Any thoughts, comments, feedback, issues, etc may be directed to:{" "}
         </h3>
@@ -60,12 +56,7 @@ const About = () => {
           {" "}
           <i class="envelope outline icon"> </i> opine.sender@gmail.com
         </a>
-        <p style={{ fontSize: "0.9rem", marginTop: "2rem" }}>
-          Note: This site is not setup to handle actual payment for services at
-          the moment. The little add credits button in the footer is in test
-          mode. If you want more credits simply enter 42 x4 as the card number.
-          You can make up the rest of the information.
-        </p>
+       
       </div>
     </div>
   );
