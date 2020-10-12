@@ -11,7 +11,7 @@ import SurveyNew from './surveys/SurveyNew'
 import SurveyDelete from './surveys/SurveyDelete'
 import EditSurvey from './surveys/EditSurvey'
 import SurveyChart from './surveys/SurveyChart'
-import ShowBarChart from './surveys/visualizations/ShowBarChart'
+import ShowBarChart from './visualizations/ShowBarChart'
 import About from './About'
 import Thanks from './Thanks'
 
