@@ -1,4 +1,7 @@
 const express = require("express");
+
+const helmet = require('helmet')
+
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
@@ -20,6 +23,7 @@ mongoose
   );
 
 const app = express();
+app.use(helmet())
 
 app.use(bodyParser.json());
 
@@ -49,6 +53,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
+
 
 const PORT = process.env.PORT || 5000;
 
