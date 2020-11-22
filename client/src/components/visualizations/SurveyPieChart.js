@@ -9,7 +9,7 @@ const PieChart = (props) => {
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
   const id = props.id;
-  const survey = useSelector((state) => state.surveys.filter(s => s._id == id));
+  const survey = useSelector((state) => state.surveys.filter(s => s._id === id));
   let data, title, subject, body;
   if (survey[0]) {
     data = [survey[0].yes, survey[0].maybe, survey[0].no];
@@ -76,7 +76,7 @@ const PieChart = (props) => {
           return arcGenerator(interpolator(t));
         };
       });
-  }, [data, dimensions]);
+  }, [data, dimensions, id]);
 
   return (
     <div>

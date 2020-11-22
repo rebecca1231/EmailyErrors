@@ -28,7 +28,7 @@ const useResizeObserver = (ref) => {
 const SurveyBarChart = (props) => {
 const id = props.id
  
-  const sData = useSelector((state) => state.surveys.filter(s => s._id == id))
+  const sData = useSelector((state) => state.surveys.filter(s => s._id === id))
   let data, title, subject, body;
   if (sData[0]) {
     data = [sData[0].yes, sData[0].maybe, sData[0].no];
@@ -108,7 +108,7 @@ const id = props.id
       .transition()
       .attr("fill", colorScale)
       .attr("height", (value) => dimensions.height - yScale(value));
-  }, [data, dimensions]);
+  }, [data, dimensions, id]);
 
   return (
     <div>

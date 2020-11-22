@@ -14,7 +14,7 @@ class Header extends Component {
           </a>
         );
       default:
-        return [
+        return (
           <div className="">
             <Link className="ui animated fade button yellow" to="/surveys/new">
               <div className="visible content">New</div>
@@ -23,9 +23,8 @@ class Header extends Component {
                 <i className="plus icon"></i>
               </div>
             </Link>
-          </div>,
-          ,
-        ];
+          </div>
+        );
     }
   }
 

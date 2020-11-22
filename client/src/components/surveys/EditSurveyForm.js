@@ -10,7 +10,7 @@ import {fetchSurvey} from '../../actions'
 //input values from id
 
 let EditSurveyForm = props => {
-  const id = props.id
+  //const id = props.id
   const renderFields = () => {
     return _.map(formFields, ({ label, name }) => {
       return (

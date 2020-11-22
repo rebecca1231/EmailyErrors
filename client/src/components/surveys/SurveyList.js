@@ -58,10 +58,6 @@ class SurveyList extends Component {
       );
     return surveys.reverse().map((survey) => {
       //render survey response info
-      const total = survey.yes + survey.no;
-      const yesWidth = Math.round((survey.yes / total) * 100);
-      const noWidth = Math.round((survey.no / total) * 100);
-
       const lastResponse = survey.lastResponded
         ? ", Last Response on: " +
           new Date(survey.lastResponded).toLocaleDateString()
