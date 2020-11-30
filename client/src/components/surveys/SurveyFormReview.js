@@ -28,7 +28,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, saveSurvey, hist
         onClick={onCancel}
         className="ui button yellow"
       >
-        <i class="arrow left icon"></i>
+        <i className="arrow left icon"></i>
         Back
       </button>
       <button
@@ -36,7 +36,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, saveSurvey, hist
         className="ui button right floated blue"
       >
         Save Draft
-        <i class="save outline icon right floated"> </i>
+        <i className="save outline icon right floated"> </i>
       </button>
 
       <button
@@ -44,7 +44,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, saveSurvey, hist
         className="ui button right floated teal"
       >
         Send Survey  
-        <i class="envelope outline icon right floated"> </i>
+        <i className="envelope outline icon right floated"> </i>
       </button>
     </div>
   );

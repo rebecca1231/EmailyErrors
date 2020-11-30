@@ -7,7 +7,7 @@ const server = require("../index.js");
 chai.use(chaiHttp);
 
 describe("Server!", () => {
-  it("welcomes user to the api", (done) => {
+  it("can get homepage", (done) => {
     chai
       .request("http://localhost:3000")
       .get("/")

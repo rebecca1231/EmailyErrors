@@ -36,7 +36,7 @@ class SurveyChart extends React.Component {
       <div className="ui container">
         <div style={{ margin: "1rem" }}>
           <Link to="/surveys" className="ui button">
-            <i class="arrow left icon"></i>
+            <i className="arrow left icon"></i>
             Back
           </Link>
           <button

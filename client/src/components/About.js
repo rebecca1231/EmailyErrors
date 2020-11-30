@@ -54,7 +54,7 @@ const About = () => {
           className="ui basic blue button"
         >
           {" "}
-          <i class="envelope outline icon"> </i> opine.sender@gmail.com
+          <i className="envelope outline icon"> </i> opine.sender@gmail.com
         </a>
        
       </div>
