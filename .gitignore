@@ -2,3 +2,4 @@ node_modules
 dev.js
 .env
 .DS_Store
+.git.bfg-report

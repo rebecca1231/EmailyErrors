@@ -1,3 +1,5 @@
+//start frontend before running tests.
+
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const assert = chai.assert;
